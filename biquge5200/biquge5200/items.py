@@ -30,4 +30,4 @@ class Biquge5200Item(scrapy.Item):
     #存放小说地址列表
     novel_section_urls = scrapy.Field()
     #存放小说章节地址和小说章节名臣对应关系，字典
-    section_url_and_section_name = scrapy.Field()
+    section_url_And_section_name = scrapy.Field()

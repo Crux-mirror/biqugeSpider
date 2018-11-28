@@ -29,14 +29,14 @@ class BiqugeSpider(scrapy.Spider):
     def parse2(self,response):
         print(response.url)
         items = response.meta['items']
-        res=Selctor(response)
+        res=Selector(response)
         #获取页面上所有小说主页连接地址
         novel_urls=res.xpath('//td/a[not(@title)]/@href').extract()
         #获取页面所有小说的名字
         novel_names=res.xpath('//td/a[not(@title)]/text()').extract()
         page_novel_number=len(novel_urls)
         for index in range(page_novel_number):
-            item=DingdianxiaoshuoItem()
+            item=Biquge5200Item()
             item['novel_name']=novel_names[index]
             item['novel_url'] =novel_urls[index]
             items.append(item)
@@ -48,7 +48,7 @@ class BiqugeSpider(scrapy.Spider):
         #接收传递的item
         item=response.meta['item']
         #写入小说类别
-        item['novel_family']=response.xpath('//table/tr[1]/td[1]/a/text()').extract_first()
+        item['novle_family']=response.xpath('//table/tr[1]/td[1]/a/text()').extract_first()
         #写入小说作者
         item['novel_author']=response.xpath('//table/tr[1]/td[2]/text()').extract_first()
         #写入小说状态
@@ -79,5 +79,5 @@ class BiqugeSpider(scrapy.Spider):
         #建立哈希表，存储章节地址和章节名称的对应关系
         section_url_And_section_name=dict(zip(section_urls,section_names))
         #将对应关系，写入item
-        item["section_url_And_section_name"]=section_url_And_section_name
+        item["section_url_And_section_name"] = section_url_And_section_name
         yield item

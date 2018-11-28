@@ -6,7 +6,7 @@
 # See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 from pymongo import MongoClient
 from urllib import request
-from bs4 import BeaytifulSoup
+from bs4 import BeautifulSoup
 
 #将每个小说存放MongoDB数据库
 class Biquge5200Pipeline(object):
