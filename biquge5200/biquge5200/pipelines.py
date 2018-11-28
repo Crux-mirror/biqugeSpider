@@ -14,9 +14,11 @@ class Biquge5200Pipeline(object):
         #如果获取章节连接进行如下操作
         if "novel_section_urls" in item:
             # 获取Mongodb链接
-            client = MongoClient("mongodb://127.0.0.1:27017")
+            client = MongoClient("127.0.0.1", 27017)
+
             #连接数据库
-            db =client.dingdian
+            db =client.admin
+            db.authenticate("crux", "163444")
             #获取小说名称
             novel_name=item['novel_name']
             #根据小说名字，使用集合，没有则创建
@@ -38,14 +40,14 @@ class Biquge5200Pipeline(object):
                     #使用urllib库获取网页HTML
                     response = request.Request(url=section_url)
                     download_response = request.urlopen(response)
-                    download_html = download_response.read().decode('utf-8')
+                    download_html = download_response.read().decode('utf-8',"ignore")
                     #利用BeautifulSoup对HTML进行处理，截取小说内容
                     soup_texts = BeautifulSoup(download_html, 'lxml')
                     content=soup_texts.find("dd",attrs={"id":"contents"}).getText()
 
 
                     #向Mongodb数据库插入下载完的小说章节内容
-                    novel.insert({"novel_name": item['novel_name'], "novel_family": item['novel_family'],
+                    novel.insert({"novel_name": item['novel_name'], "novle_family": item['novle_family'],
                                   "novel_author":item['novel_author'], "novel_status":item['novel_status'],
                                   "section_name":section_name,
                                   "content": content})
