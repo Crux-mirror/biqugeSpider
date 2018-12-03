@@ -16,7 +16,7 @@ class Biquge5200Pipeline(object):
         book_name = item["book_name"]
         book = db[book_name]
         print("开始下载："+book_name+":"+item["section_name"])
-        book.insert({"category":item["category"],"book_name":item["book_name"],
+        book.insert({"category":item["category"],"book_name":item["book_name"],"section_name":item["section_name"],
                    "book_author":item["book_author"],"content":item["content"]})
         return item
 

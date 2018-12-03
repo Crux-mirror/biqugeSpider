@@ -1,0 +1,44 @@
+2018-12-02T21:13:14+0800 [-] Loading /usr/local/lib/python3.6/site-packages/scrapyd/txapp.py...
+2018-12-02T21:13:14+0800 [-] Scrapyd web console available at http://0.0.0.0:6800/
+2018-12-02T21:13:14+0800 [-] Loaded.
+2018-12-02T21:13:14+0800 [twisted.scripts._twistd_unix.UnixAppLogger#info] twistd 18.9.0 (/usr/local/bin/python3.6 3.6.4) starting up.
+2018-12-02T21:13:14+0800 [twisted.scripts._twistd_unix.UnixAppLogger#info] reactor class: twisted.internet.epollreactor.EPollReactor.
+2018-12-02T21:13:14+0800 [-] Site starting on 6800
+2018-12-02T21:13:14+0800 [twisted.web.server.Site#info] Starting factory <twisted.web.server.Site object at 0x7ffb9db95cf8>
+2018-12-02T21:13:14+0800 [Launcher] Scrapyd 1.2.0 started: max_proc=4, runner='scrapyd.runner'
+2018-12-02T21:13:19+0800 [twisted.python.log#info] "183.226.69.37" - - [02/Dec/2018:13:13:19 +0000] "GET / HTTP/1.1" 200 706 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36"
+2018-12-02T21:14:19+0800 [twisted.web.http.HTTPChannel#info] Timing out client: IPv4Address(type='TCP', host='183.226.69.37', port=5084)
+2018-12-02T21:15:01+0800 [twisted.python.log#info] "127.0.0.1" - - [02/Dec/2018:13:14:59 +0000] "POST /addversion.json HTTP/1.1" 200 98 "-" "Python-urllib/3.6"
+2018-12-02T21:17:24+0800 [twisted.python.log#info] "127.0.0.1" - - [02/Dec/2018:13:17:24 +0000] "POST /shedule.json HTTP/1.1" 404 153 "-" "curl/7.47.0"
+2018-12-02T21:17:59+0800 [_GenericHTTPChannelProtocol,4,127.0.0.1] Unhandled Error
+	Traceback (most recent call last):
+	  File "/usr/local/lib/python3.6/site-packages/twisted/web/http.py", line 2190, in allContentReceived
+	    req.requestReceived(command, path, version)
+	  File "/usr/local/lib/python3.6/site-packages/twisted/web/http.py", line 917, in requestReceived
+	    self.process()
+	  File "/usr/local/lib/python3.6/site-packages/twisted/web/server.py", line 199, in process
+	    self.render(resrc)
+	  File "/usr/local/lib/python3.6/site-packages/twisted/web/server.py", line 259, in render
+	    body = resrc.render(self)
+	--- <exception caught here> ---
+	  File "/usr/local/lib/python3.6/site-packages/scrapyd/webservice.py", line 21, in render
+	    return JsonResource.render(self, txrequest).encode('utf-8')
+	  File "/usr/local/lib/python3.6/site-packages/scrapyd/utils.py", line 20, in render
+	    r = resource.Resource.render(self, txrequest)
+	  File "/usr/local/lib/python3.6/site-packages/twisted/web/resource.py", line 250, in render
+	    return m(request)
+	  File "/usr/local/lib/python3.6/site-packages/scrapyd/webservice.py", line 47, in render_POST
+	    spider = args.pop('spider')
+	builtins.KeyError: 'spider'
+	
+2018-12-02T21:17:59+0800 [twisted.python.log#info] "127.0.0.1" - - [02/Dec/2018:13:17:59 +0000] "POST /schedule.json HTTP/1.1" 200 64 "-" "curl/7.47.0"
+2018-12-02T21:30:03+0800 [twisted.python.log#info] "183.226.69.37" - - [02/Dec/2018:13:30:03 +0000] "GET / HTTP/1.1" 200 714 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36"
+2018-12-02T21:31:03+0800 [twisted.web.http.HTTPChannel#info] Timing out client: IPv4Address(type='TCP', host='183.226.69.37', port=3549)
+2018-12-02T21:31:27+0800 [twisted.python.log#info] "127.0.0.1" - - [02/Dec/2018:13:31:26 +0000] "POST /schedule.json HTTP/1.1" 200 60 "-" "curl/7.47.0"
+2018-12-02T21:32:20+0800 [twisted.python.log#info] "127.0.0.1" - - [02/Dec/2018:13:32:19 +0000] "POST /schedule.json HTTP/1.1" 200 60 "-" "curl/7.47.0"
+2018-12-02T21:37:27+0800 [twisted.python.log#info] "127.0.0.1" - - [02/Dec/2018:13:37:27 +0000] "POST /schedule.json HTTP/1.1" 200 60 "-" "curl/7.47.0"
+2018-12-02T21:39:25+0800 [twisted.python.log#info] "127.0.0.1" - - [02/Dec/2018:13:39:24 +0000] "POST /schedule.json HTTP/1.1" 200 60 "-" "curl/7.47.0"
+2018-12-02T21:39:35+0800 [twisted.python.log#info] "183.226.69.37" - - [02/Dec/2018:13:39:35 +0000] "GET /jobs HTTP/1.1" 200 457 "http://120.79.13.169:6800/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36"
+2018-12-02T21:39:37+0800 [twisted.python.log#info] "183.226.69.37" - - [02/Dec/2018:13:39:37 +0000] "GET / HTTP/1.1" 200 714 "http://120.79.13.169:6800/jobs" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36"
+2018-12-02T21:39:57+0800 [twisted.python.log#info] "183.226.69.37" - - [02/Dec/2018:13:39:57 +0000] "GET /jobs HTTP/1.1" 200 457 "http://120.79.13.169:6800/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36"
+2018-12-02T21:39:58+0800 [twisted.python.log#info] "183.226.69.37" - - [02/Dec/2018:13:39:58 +0000] "GET / HTTP/1.1" 200 714 "http://120.79.13.169:6800/jobs" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36"

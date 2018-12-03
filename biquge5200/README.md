@@ -13,4 +13,5 @@ url //ul/li/span[1]/a/@href
 下一章节url   //div[@class='bottem2']/a[4]/@href  如果它等于章节url 则爬取完成
 
 
-
+遇到的问题：
+    1.多级传参的时候才用meta，导致多个参数传递到下一层全部一样，原因，meta直接传参采取的是浅拷贝，需要用深拷贝传参，copy.deepcopy(参数)

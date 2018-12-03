@@ -68,6 +68,7 @@ ITEM_PIPELINES = {
     'biquge5200.pipelines.Biquge5200Pipeline': 300,
     }
 
+FEED_EXPORT_ENCODING = 'utf-8'
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
 #AUTOTHROTTLE_ENABLED = True
